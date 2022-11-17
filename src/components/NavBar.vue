@@ -8,7 +8,7 @@
           <h1
             class="font-black text-2xl lg:text-4xl flex flex-col place-content-center"
           >
-            <router-link to="/">ROOMSHARE</router-link>
+            <router-link to="/">ROOMIES</router-link>
           </h1>
           <form @submit.prevent="" class="flex flex-row place-items-center">
             <input

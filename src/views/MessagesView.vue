@@ -16,47 +16,35 @@ const messages: Ref<string[]> = ref([
   "Room already taken",
   "My sister wants to move in with us no sorry",
 ]);
+
+/**the color preferred by the user. Provided by the user and Stored in the database. */
+const color = ref("purple");
+const class1 = ref(
+  `flex flex-col w-9/12 p-2 rounded-lg text-slate-200 space-y-3 bg-${color.value}-300`
+);
+const class2 = ref(
+  `to-purple-800 from-${color.value}-400 flex-1 rounded-lg bg-gradient-to-t`
+);
+const class3 = ref(class2.value + " opacity-50");
+const class4 = ref(
+  `flex flex-row bg-${color.value}-600 rounded-xl pl-2 max-h-7`
+);
 </script>
 
 <template>
-  <main
-    class="flex flex-col bg-purple-100 w-9/12 p-2 rounded-lg text-slate-200 space-y-3"
-  >
+  <main :class="class1">
     <section class="flex flex-row space-x-2">
-      <button
-        class="to-purple-800 from-purple-400 flex-1 rounded-lg bg-gradient-to-t"
-      >
-        NEW
-      </button>
-      <button
-        class="to-purple-800 from-purple-400 flex-1 rounded-lg bg-gradient-to-t opacity-50"
-        disabled
-      >
-        INBOX
-      </button>
-      <button
-        class="to-purple-800 from-purple-400 flex-1 rounded-lg bg-gradient-to-t opacity-50"
-        disabled
-      >
-        SENT
-      </button>
-      <button
-        class="to-purple-800 from-purple-400 flex-1 rounded-lg bg-gradient-to-t opacity-50"
-        disabled
-      >
-        ADMIN
-      </button>
+      <button :class="class2">NEW</button>
+      <button :class="class3" disabled>INBOX</button>
+      <button :class="class3" disabled>SENT</button>
+      <button :class="class3" disabled>ADMIN</button>
     </section>
     <section
       id="messages"
       class="flex flex-col text-sm max-h-screen overflow-y-scroll space-y-4 py-1"
     >
       <transition-group name="toast">
-        <div
-          class="flex flex-row bg-purple-600 rounded-xl pl-2 max-h-7"
-          v-for="(message, index) in messages"
-          :key="index"
-        >
+        <div :class="class4" v-for="(message, index) in messages" :key="index">
           <div class="w-1/12 flex place-items-center">
             <img src="/media/profile.jpg" alt="" class="rounded-full h-9" />
           </div>
